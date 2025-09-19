@@ -2,7 +2,6 @@
     position: fixed;
     top: 0;
     bottom: 0;
-    width: 250px;
     background-color: #fff;
     z-index: 1050;
     transition: transform 0.3s ease-in-out;
@@ -11,6 +10,7 @@
 .leftbar {
     left: 0;
     transform: translateX(-100%);
+    width: 212px;
   }
   
   /* When sidebar is visible */
@@ -21,6 +21,7 @@
   .rightbar {
     right: 0;
     transform: translateX(100%);
+    width: 280px;
   }
   
   /* When sidebar is visible */
@@ -28,5 +29,3 @@
     transform: translateX(0);
     visibility: visible;
   }
-  
-  

@@ -1,35 +1,38 @@
-import React, { useState } from "react";
-import LeftBar from "./LeftBar";
-import RightBar from "./RightBar";
+import { useState } from "react";
 
-const Navbar = () => {
-  const [leftSideBar, setLeftSideBar] = useState(true);
-  const [rightSideBar, setRightSideBar] = useState(true);
+const Navbar = ({ toggleLeft, toggleRight }) => {
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const handleToggle = () => setIsCollapsed(!isCollapsed);
 
-  const handleLeftBar = ()=>{
-    setLeftSideBar(!leftSideBar);
-  }
-  const handleRightBar = ()=>{
-    setRightSideBar(!rightSideBar);
-  }
   return (
-    <>
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm px-3">
-      <div className="collapse navbar-collapse" id="navbarNav">
+      <button
+        className="navbar-toggler"
+        type="button"
+        onClick={handleToggle}
+        aria-controls="navbarNav"
+        aria-expanded={!isCollapsed}
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+
+      <div
+        className={`collapse navbar-collapse ${isCollapsed ? "" : "show"}`}
+        id="navbarNav"
+      >
         <ul className="navbar-nav">
           <li className="nav-item">
-           <button onClick={()=>handleLeftBar()}>
-            File
-           </button>
-          </li>
-          <li className="nav-item">
-            <button className="nav-link" href="#">
-              Star
+            <button className="nav-link btn" onClick={toggleLeft}>
+              File
             </button>
           </li>
           <li className="nav-item">
-            Dashboards
+            <button className="nav-link btn">
+              Star
+            </button>
           </li>
+          <li className="nav-item">Dashboards</li>
         </ul>
 
         <ul className="navbar-nav ms-auto align-items-center">
@@ -42,31 +45,28 @@ const Navbar = () => {
             />
           </li>
           <li className="nav-item">
-            <button className="nav-link" href="#">
-              <i className="bi bi-star">Theme</i>
+            <button className="nav-link btn">
+              <i className="bi bi-star"></i> Theme
             </button>
           </li>
           <li className="nav-item">
-            <button className="nav-link" href="#">
-              <i className="bi bi-bell">remind</i>
+            <button className="nav-link btn">
+              <i className="bi bi-bell"></i> remind
             </button>
           </li>
           <li className="nav-item">
-            <button className="nav-link" href="#">
-              <i className="bi bi-bell">noti</i>
+            <button className="nav-link btn">
+              <i className="bi bi-bell"></i> noti
             </button>
           </li>
           <li className="nav-item">
-            <button onClick={()=>handleRightBar()}>
-              <i className="bi bi-bell">file</i>
+            <button className="nav-link btn" onClick={toggleRight}>
+              <i className="bi bi-bell"></i> file
             </button>
           </li>
         </ul>
       </div>
     </nav>
-    <LeftBar show={leftSideBar} toggle={handleLeftBar} />
-    <RightBar show={rightSideBar} toggle={handleRightBar}/>
-    </>
   );
 };
 
