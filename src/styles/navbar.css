@@ -1,0 +1,32 @@
+.sidebars{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: #fff;
+    z-index: 1050;
+    transition: transform 0.3s ease-in-out;
+    visibility: hidden;
+}
+.leftbar {
+    left: 0;
+    transform: translateX(-100%);
+  }
+  
+  /* When sidebar is visible */
+  .leftbar.show {
+    transform: translateX(0);
+    visibility: visible;
+  }
+  .rightbar {
+    right: 0;
+    transform: translateX(100%);
+  }
+  
+  /* When sidebar is visible */
+  .rightbar.show {
+    transform: translateX(0);
+    visibility: visible;
+  }
+  
+  
